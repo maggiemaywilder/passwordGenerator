@@ -1,46 +1,59 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+
+
 // Criteria arrays
   const numbers = Array.from("0123456789");
   const upperCase = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
   const lowerCase = Array.from("abcdefghijklmnopqrstuvwxyz");
   const specials = Array.from(" !\"#$%&\'()*+\,-./:;<=>?@[\\]^_`{|}~");
 
-  // Checking arrays 
-console.log(specials);
-console.log(numbers);
-console.log(upperCase);
-console.log(lowerCase);
-
-// Prompts to generate criteria
-
-function criteriaSelector() {
-  var quantity = prompt("How many characters would you like your password to contain?", "Value between 8 and 128 characters.");
-    // alert if not correct amount of characters
+// Functions defined
+var Criteria = function() {
+  quantity = prompt("How many characters would you like your password to contain?", "Value between 8 and 128 characters.");
+// alert if not correct amount of characters
     if (quantity < 8 || quantity > 128) {
-      alert("Password must be between 8 and 128 characters!");
-      break;
-    };
-  var number = prompt("Click OK to confirm using numeric characters");
-  var upper = prompt("Click OK to confirm using upper case characters");
-  var lower = prompt("Click OK to confirm using lower case characters");
-  var special = prompt("Click OK to confirm using special characters");
+     alert("Password must be between 8 and 128 characters!");
+    }
+  number = confirm("Click OK to confirm using numeric characters");
+  upper = confirm("Click OK to confirm using upper case characters");
+  lower = confirm("Click OK to confirm using lower case characters");
+  special = confirm("Click OK to confirm using special characters");
+    return criteria = (quantity, number, upper, lower, special);
+  };
+
+function generateArray() {
+  var selection = [];
+    if (number = true) {
+      selection.push(numbers);
+    }
+    if (upper = true) {
+      selection.push(upperCase);
+    }
+    if (lower = true) {
+      selection.push(lowerCase);
+    }
+    if (special = true) {
+      selection.push(specials);
+    }
+      return selection;
+  }
+
+function createUnique()
 
 
-}
+// Calling functions with button
 
-var passwordCriteria = {
-  quantity: 10,
-  number: true,
-  lower: true,
-  upper: true,
-  special: false,
-}
+function writePassword() {
+  function collectCriteria();
+  function generateArray(); 
+  function createUnique(); 
+}  
 
-
-if (characters < 8 || characters > 128) {  
-  alert("Password must be between 8 and 128 characters")
+ /* 
+// Create constructor via Dani Krossing tutorial
+function Criteria
 }
 
 // Write password to the #password input
@@ -49,8 +62,20 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
+function criteriaSelector(quantity, number, upper, lower, special) {
+  passwordCriteria = {
+    quantity: quantity,
+    number: number,
+    lower: lower,
+    upper: upper,
+    special: special,
+  };
+  console.log(passwordCriteria);
+}
+*/
+
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword); 
+
