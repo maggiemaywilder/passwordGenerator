@@ -14,7 +14,10 @@ var includeUpper;
 var includeLower;
 var includeSpecials;
 var include;
+var includeArray = [];
+var passwordArray = [];
 
+// Function for choosing length
 function getLength() {
     do {
         quantity = parseInt(prompt("How many characters would you like your password to contain", "Value must be a whole number between 8 and 128 characters."))
@@ -22,8 +25,9 @@ function getLength() {
     while (quantity === null || Number.isInteger(quantity) === false || quantity < 8 || quantity > 128) {
         }
     return quantity;
-    }
+    };
 
+// Function for selecting character types
 function whichCharacters() {
     includeNumbers = confirm("Would you like to include numbers?");
     includeUpper = confirm("Would you like to include upper case letters?");
@@ -33,18 +37,56 @@ function whichCharacters() {
         console.log(includeUpper);
         console.log(includeLower);
         console.log(includeSpecials);
-
 };
 
+// Function for creating array to generate password from 
 function generateArray() {
-  console.log(includeNumbers);
-  console.log(includeUpper);
-  console.log(includeLower);
-  console.log(includeSpecials);
+  var includeArray = [];
+    if (includeNumbers) {
+      includeArray.push(numbers)
+    };
+    console.log(includeArray);
+    if (includeUpper == true) {
+      includeArray.push(upperCase)
+    };
+    if (includeLower == true) {
+      includeArray.push(lowerCase)
+    };
+    if (includeSpecials == true) {
+      includeArray.push(specials)
+    };
+    return includeArray;
+};
+      
 
-}
+  // Function to generate array, using round so it can round up or down to get both ends of criteria array
+  function create() {
+    for (var i = 0; i < quantity; i++) {
+      passwordArray[i] = Math.round(Math.random() * includeArray.length);
+    }
+    console.log(passwordArray);
+    };
+
+  // function to map to criteria array
+    function translate() {
+
+    }
+
+// function to join to string (see below)
+
+  function writePassword() {
+    getLength();
+    whichCharacters();
+    generateArray();
+    console.log(includeArray);
+    create();
+    console.log("function called"); //Check to make sure it made it this far.
+};
 
 /*
+passwordArray.join("");
+  return password;
+
 
     function getRandomInt(min, max) {
         min = Math.ceil(min);
@@ -55,92 +97,15 @@ function generateArray() {
 };
 */
 
-function writePassword() {
-    getLength();
-    console.log(quantity);
-    whichCharacters();
-    generateArray();
-    console.log("function called");
-};
 
-
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
 
 /*
-// Nested function (Tech CBT video YouTube)  
-function writePassword() {
-    //define Criteria: function to collect criteria
-  function Criteria() {
-    quantity = prompt("How many characters would you like your password to contain?", "Value between 8 and 128 characters.");
-    // alert if not correct amount of characters
-    // ***** need to add if not integer *****
-        if (quantity < 8 || quantity > 128) {
-         alert("Password must be a whole number between 8 and 128 characters!");
-        }
-      number = confirm("Click OK to confirm using numeric characters");
-      upper = confirm("Click OK to confirm using upper case characters");
-      lower = confirm("Click OK to confirm using lower case characters");
-      special = confirm("Click OK to confirm using special characters");
-    };
-  function generateArray(); 
-  function createUnique(); 
-    // Calling functions
-      return this.quantity + ", " + this.number + ", " + this.upper + ", " + this.lower + ", " + this.special;
-/*
-// Functions defined
-var Criteria = function() {
-    return criteria = (quantity, number, upper, lower, special);
-  };
-
 function generateArray() {
   var selection = [];
     if (number = true) {
       selection.push(numbers);
     }
-    if (upper = true) {
-      selection.push(upperCase);
-    }
-    if (lower = true) {
-      selection.push(lowerCase);
-    }
-    if (special = true) {
-      selection.push(specials);
-    }
-      return selection;
   }
-
-function createUnique()
-
-
-// Calling functions with button
-/*
-} 
-// Create constructor via Dani Krossing tutorial
-function Criteria
-}
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-}
-function criteriaSelector(quantity, number, upper, lower, special) {
-  passwordCriteria = {
-    quantity: quantity,
-    number: number,
-    lower: lower,
-    upper: upper,
-    special: special,
-  };
-  console.log(passwordCriteria);
-}
 */
-
-
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword); 
-
+generateBtn.addEventListener("click", writePassword);
