@@ -8,7 +8,7 @@ const numbers = Array.from("0123456789"),
   specials = Array.from(" !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~");
 
 // Variables for input
-var quantity,
+var passwordLength,
   includeNumbers,
   includeUpper,
   includeLower,
@@ -19,13 +19,16 @@ var quantity,
 
 // Function for choosing length
 function getLength() {
-    do {
-        quantity = parseInt(prompt("How many characters would you like your password to contain", "Value must be a whole number between 8 and 128 characters."))
-     }
-    while (quantity === null || Number.isInteger(quantity) === false || quantity < 8 || quantity > 128) {
-        }
-    return quantity;
-    };
+  do {
+    passwordLength = Number(prompt(
+        "How many characters would you like? \n(8 to 128) characters only!",
+        "68"));
+  } while (isNaN(passwordLength) ||
+           passwordLength < 8 ||
+           passwordLength > 128);
+
+  return passwordLength;
+}
 
 // Function for selecting character types
 function whichCharacters() {
@@ -60,7 +63,7 @@ function generateArray() {
 
   // Function to generate array, using round so it can round up or down to get both ends of criteria array
   function create() {
-    for (var i = 0; i < quantity; i++) {
+    for (var i = 0; i < passwordLength; i++) {
       passwordArray[i] = Math.round(Math.random() * includeArray.length);
     }
     result = passwordArray;
