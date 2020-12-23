@@ -8,14 +8,15 @@ const lowerCase = Array.from("abcdefghijklmnopqrstuvwxyz");
 const specials = Array.from(" !\"#$%&\'()*+\,-./:;<=>?@[\\]^_`{|}~");
 
 // Variables for input
-var quantity;
+var quantity; // password length, from function getLength
 var includeNumbers;
 var includeUpper;
 var includeLower;
-var includeSpecials;
-var include;
-var includeArray = [];
-var passwordArray = [];
+var includeSpecials; // all responses to prompts from function whichCharacters
+var includeArray = []; // characters selected to include for password selection, concatenated from individual include arrays selected
+var randomArray = []; // array of random numbers for password, from function create
+var passwordArray = []; // array translated from indexes defined in randomArray
+var password;
 
 // Function for choosing length
 function getLength() {
@@ -55,22 +56,35 @@ function generateArray() {
       includeArray = includeArray.concat(specials)
     };
     result = includeArray;
+    console.log(includeArray);
 };
       
 
   // Function to generate array, using round so it can round up or down to get both ends of criteria array
   function create() {
     for (var i = 0; i < quantity; i++) {
-      passwordArray[i] = Math.round(Math.random() * includeArray.length);
+      randomArray[i] = Math.ceil(Math.random() * includeArray.length);
     }
-    result = passwordArray;
-    console.log(passwordArray);
+    result = randomArray;
+    console.log(randomArray);
     };
 
-  // function to map to criteria array
+  // I was unable to make map work, will revisit later
+    // function to map to random indexes to their value on criteria array (Travis Rodgers 30 methods class, skillshare)
     function translate() {
+      for (var j = 0; j < randomArray.length; j++) {
+        passwordArray[j] = includeArray[randomArray[j]];
 
-    }
+      }
+      result = passwordArray;
+      console.log(passwordArray);
+      // randomArray.map(function(element) {
+      // passwordArray = includeArray[randomArray[element]]; 
+      //  return passwordArray;
+      //  console.log(passwordArray);
+      password = passwordArray.join("");
+        return password;
+      };
 
 // function to join to string (see below)
 
@@ -80,32 +94,16 @@ function generateArray() {
     generateArray();
     console.log(includeArray);
     create();
-    console.log("function called"); //Check to make sure it made it this far.
+    translate();
+    console.log(password); //Check to make sure it made it this far.
 };
 
 /*
-passwordArray.join("");
+passwordArray.join("");  (Travis Rodgers 30 methods class, skillshare)
   return password;
-
-
-    function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-      }
-    getRandomInt();
-};
 */
 
 
 
-/*
-function generateArray() {
-  var selection = [];
-    if (number = true) {
-      selection.push(numbers);
-    }
-  }
-*/
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
