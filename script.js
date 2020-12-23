@@ -2,20 +2,20 @@
 var generateBtn = document.querySelector("#generate");
 
 // Criteria arrays
-const numbers = Array.from("0123456789");
-const upperCase = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-const lowerCase = Array.from("abcdefghijklmnopqrstuvwxyz");
-const specials = Array.from(" !\"#$%&\'()*+\,-./:;<=>?@[\\]^_`{|}~");
+const numbers = Array.from("0123456789"),
+  upperCase = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ"),
+  lowerCase = Array.from("abcdefghijklmnopqrstuvwxyz"),
+  specials = Array.from(" !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~");
 
 // Variables for input
-var quantity;
-var includeNumbers;
-var includeUpper;
-var includeLower;
-var includeSpecials;
-var include;
-var includeArray = [];
-var passwordArray = [];
+var quantity,
+  includeNumbers,
+  includeUpper,
+  includeLower,
+  includeSpecials,
+  include,
+  includeArray = [],
+  passwordArray = [];
 
 // Function for choosing length
 function getLength() {
