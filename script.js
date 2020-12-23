@@ -41,21 +41,20 @@ function whichCharacters() {
 
 // Function for creating array to generate password from 
 function generateArray() {
-  var includeArray = [];
-    if (includeNumbers) {
-      includeArray.push(numbers)
+  includeArray = ["null"];
+    if (includeNumbers == true) {
+      includeArray = includeArray.concat(numbers)
     };
-    console.log(includeArray);
     if (includeUpper == true) {
-      includeArray.push(upperCase)
+      includeArray = includeArray.concat(upperCase)
     };
     if (includeLower == true) {
-      includeArray.push(lowerCase)
+      includeArray = includeArray.concat(lowerCase)
     };
     if (includeSpecials == true) {
-      includeArray.push(specials)
+      includeArray = includeArray.concat(specials)
     };
-    return includeArray;
+    result = includeArray;
 };
       
 
@@ -64,6 +63,7 @@ function generateArray() {
     for (var i = 0; i < quantity; i++) {
       passwordArray[i] = Math.round(Math.random() * includeArray.length);
     }
+    result = passwordArray;
     console.log(passwordArray);
     };
 
